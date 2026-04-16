@@ -1,0 +1,23 @@
+@startuml
+!pragma layout smetana
+'https://plantuml.com/object-diagram
+
+object user
+object media
+object film
+object series
+object sæson
+object episodes
+object category
+
+user -- media
+media --> film
+media --> series
+series --> sæson
+sæson --> episodes
+media --> category
+
+
+
+
+@enduml
