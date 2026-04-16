@@ -1,0 +1,94 @@
+
+@startuml
+!pragma layout smetana
+'https://plantuml.com/class-diagram
+
+abstract class Media{
+- String title
+- int releaseYear
+- int rating
+- List<Category>categories
++ play()
++ pause()
+}
+
+class Menu{
+- Arraylist<User>users
+- Arraylist<Media>media
+- fileIO
+- textUI
++ start()
++ register()
++ login()
++ searchMedia()
++ searchMediaCategory()
++ showWatchedMedia()
++ showsavedMedia()
+}
+
+class User{
+- String username
+- int password
+- List<Media> watchedMedia
+- List<Media> savedMedia
+}
+
+class Film{
+- int duration
+}
+
+class Series{
+- List<Seasons>season
+}
+class Season{
+- int seasonNumber
+- List<Episode>episodes
+}
+class Episode{
+- String title
+- int duration
+- int episodeNumber
+}
+
+enum Category{
+CRIME
+ WAR
+ DRAMA
+ FAMILY
+ ROMANCE
+ SCI_FI
+ FANTASY
+ MYSTERY
+ THRILLER
+ ADVENTURE
+ HISTORY
+ BIOGRAPHY
+ HORROR
+ ANIMATION
+ ACTION
+ WESTERN
+ DOCUMENTARY
+ TALK_SHOW
+ SPORT
+}
+
+class FileIO
+class TextUI
+
+Media --|> Film
+Media --|> Series
+Series --> Season
+Season --> Episode
+User <-- Media
+Menu --> User
+Media --> Category
+Menu --> Media
+
+
+
+
+
+
+
+
+@enduml
