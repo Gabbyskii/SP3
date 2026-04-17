@@ -1,0 +1,36 @@
+@startuml
+!pragma layout smetana
+
+actor "User" as U
+
+rectangle "Streaming Service System" {
+  usecase "UC0: StartApplication" as UC0
+  usecase "UC1: CreateUser" as UC1
+  usecase "UC2: LogIn" as UC2
+  usecase "UC3: SearchMedia" as UC3
+  usecase "UC4: SelectMedia" as UC4
+  usecase "UC5: ViewLists" as UC5
+  usecase "UC6: PlayMedia" as UC6
+  usecase "UC7: ExitProgram" as UC7
+  usecase "Main Menu" as M
+}
+
+U --> UC0
+
+UC0 --> UC1
+UC0 --> UC2
+
+UC1 --> M
+UC2 --> M
+
+M --> UC3
+M --> UC5
+M --> UC7
+
+UC5 --> UC4
+UC3 --> UC4
+UC4 --> UC6
+
+UC6 --> M
+
+@enduml
