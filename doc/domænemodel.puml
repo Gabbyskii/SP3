@@ -15,7 +15,7 @@ media --> film
 media --> series
 series --> sæson
 sæson --> episodes
-media --> category
+media -- category
 
 
 
