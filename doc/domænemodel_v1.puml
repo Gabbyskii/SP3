@@ -1,0 +1,20 @@
+@startuml
+!pragma layout smetana
+
+object User
+object Media
+object Film
+object Series
+object Sæson
+object Episode
+object Category
+
+
+Media <|-- Film : "is-a"
+Media <|-- Series : "is-a"
+User --> Media : "has-a"
+Series --> Sæson : "has-a"
+Sæson --> Episode : "has-a"
+Media --> Category : "has-a"
+
+@enduml
