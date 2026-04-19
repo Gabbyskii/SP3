@@ -75,9 +75,10 @@ CRIME
 }
 
 class FileIO{
-+ loadFilm()
-+ loadSeries()
-+ saveUserData(List<User>users)
++ List<Film> loadFilm()
++ List<Series> loadSeries()
++ List<User> loadUsers()
++ List<User> saveUserData()
 }
 
 class TextUI{
