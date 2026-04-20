@@ -9,7 +9,7 @@ public class User {
     private List<Media> savedMedia;
     private List<Media> removeMedia;
 
-    public User (String username, String password){
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.watchedMedia = new ArrayList<>();
@@ -56,4 +56,5 @@ public class User {
     public void setRemoveMedia(List<Media> removeMedia) {
         this.removeMedia = removeMedia;
 
+    }
 }
