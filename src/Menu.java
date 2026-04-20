@@ -1,5 +1,3 @@
-import util.TextUI;
-
 import java.util.ArrayList;
 
 public class Menu {

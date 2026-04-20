@@ -1,17 +1,17 @@
-package util;
-
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+
 
 public class FileIO {
 
     private String filmFile = "csv/film.txt";
     private String seriesFile = "csv/series.txt";
     private String userFile = "csv/userData.txt";
+    private TextUI ui;
 
     private Scanner scan;
 
@@ -84,8 +84,31 @@ public class FileIO {
     public List<User>loadUsers(){
         List<User> userList = new ArrayList<>();
 
+        try {
+
+            BufferedReader breader = new BufferedReader(new FileReader(userFile));
+            String line = breader.readLine();
+
+            while(line != null){
 
 
+              String[] values = line.split(",");
+              if (values.length >= 2){
+                  User newUser = new User(values[0], values[1]);
+                  userList.add(newUser);
+
+              }
+
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(ui.displayMessage("User could not be found!"););
+        } catch (IOException e) {
+            throw new RuntimeException(ui.displayMessage("User could not be found!"););
+        }
+
+
+        return userList;
     }
 
 
