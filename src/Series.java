@@ -2,13 +2,13 @@ import java.util.List;
 
 public class Series extends Media {
 
-    private List<Seasons>season;
+    private List<Season>season;
 
     public Series(int releaseYear, String title, int rating, List<Category> categories) {
         super(releaseYear, title, rating, categories);
     }
 
-    public List<Seasons> getSeason() {
+    public List<Season> getSeason() {
         return season;
     }
 

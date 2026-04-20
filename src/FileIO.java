@@ -11,7 +11,7 @@ public class FileIO {
     private String filmFile = "csv/film.txt";
     private String seriesFile = "csv/series.txt";
     private String userFile = "csv/userData.txt";
-    private TextUI ui;
+
 
     private Scanner scan;
 
@@ -102,26 +102,32 @@ public class FileIO {
             }
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(ui.displayMessage("User could not be found!"););
+            System.out.println("Fejl ved indlæsning af brugere: " + e.getMessage());
         } catch (IOException e) {
-            throw new RuntimeException(ui.displayMessage("User could not be found!"););
+            System.out.println("Fejl ved indlæsning af bruger. " + e.getMessage());
         }
-
 
         return userList;
     }
 
 
-    public void saveUsers (List<User> userList ){
+    public void saveUsers (List<User> userList){
+        try {
+            BufferedWriter bWriter = new BufferedWriter(new FileWriter(userFile));
 
+            for (User user : userList) {
+                bWriter.write(user.getUsername() + ", " + user.getPassword());
+                bWriter.newLine();
+            }
+            bWriter.close();
 
+        } catch (Exception e) {
+            System.out.println("Fejl ved gemning af bruger: " + e.getMessage());
+        }
     }
 
-
-
-
-
-
-
-
 }
+
+
+
+

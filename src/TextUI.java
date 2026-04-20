@@ -26,6 +26,11 @@ public class TextUI {
     }
 
 
+    public String promptString(String msg){
+        displayMessage(msg);
+        return scan.nextLine().trim();
+    }
+
     public boolean promptBinary(String msg){
         displayMessage(msg);
         String input = scan.nextLine();
