@@ -12,13 +12,14 @@ public class Series extends Media {
         return season;
     }
 
+
     @Override
     public void play() {
-        super.play();
+      ui.displayMessage("Starter serie: "+ title);
     }
 
     @Override
     public void pause() {
-        super.pause();
+        ui.displayMessage("Pauser serie: "+ title);
     }
 }
