@@ -16,15 +16,18 @@ public class TextUI {
         return scan.nextLine();
     }
 
+    public String promptString(String msg){
+        displayMsg(msg);
+        return scan.nextLine().trim();
+    }
+
     public String promptForUsername(){
         System.out.println("Indtast brugernavn: ");
         return scan.nextLine();
-
     }
     public String promptForPassword(){
         System.out.println("Indtast password: ");
         return scan.nextLine();
-
     }
 
 
