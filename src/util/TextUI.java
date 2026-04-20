@@ -7,8 +7,23 @@ public class TextUI {
     private Scanner scan = new Scanner(System.in);
 
 
-    public void startMessage(String message){
-        System.out.println(message);
+    public void displayMsg(String msg){
+        System.out.println(msg);
+
+    }
+
+    public boolean promptBinary(String msg){
+        displayMsg(msg);
+        String input = scan.nextLine();
+        if(input.equalsIgnoreCase("Y")){
+            return true;
+        }
+        else if(input.equalsIgnoreCase("N")){
+            return false;
+        }
+        else{
+            return promptBinary(msg);
+        }
     }
 
     public String getUserInput(String prompt){
