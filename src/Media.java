@@ -19,13 +19,8 @@ public abstract class Media {
     }
 
 
-    public void play(){
-        ui
-    }
-
-    public void pause(){
-
-    }
+    public abstract void play();
+    public abstract void pause();
 
 
 
