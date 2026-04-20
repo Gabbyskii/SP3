@@ -26,6 +26,10 @@ public class TextUI {
         }
     }
 
+    public void displayError(String msg) {
+        System.err.println("Fejl: " + msg);
+    }
+
     public String getUserInput(String prompt){
         System.out.println(prompt);
         return scan.nextLine();
