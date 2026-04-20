@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    private List<String> filmFile = "csv/film.txt";
+    private String filmFile = "csv/film.txt";
     private String seriesFile = "csv/series.txt";
     private String userFile = "csv/userData.txt";
 

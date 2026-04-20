@@ -16,6 +16,7 @@ abstract class Media{
 abstract class Menu{
 -Arraylist<User>users
 -Arraylist<Media>media
++ start()
 + register()
 + login()
 }
@@ -38,6 +39,7 @@ class MenuActions{
 + searchMediaCategory()
 + showWatchedMedia()
 + showsavedMedia()
++ showMenu()
 }
 
 class Series{
