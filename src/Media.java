@@ -1,3 +1,5 @@
+import util.TextUI;
+
 import java.util.List;
 
 public abstract class Media {
@@ -6,6 +8,7 @@ public abstract class Media {
   private int releaseYear;
   private int rating;
   private List<Category> categories;
+  TextUI ui;
 
 
     public Media(int releaseYear, String title, int rating, List<Category> categories) {
@@ -17,7 +20,7 @@ public abstract class Media {
 
 
     public void play(){
-
+        ui
     }
 
     public void pause(){
