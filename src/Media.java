@@ -16,6 +16,21 @@ public abstract class Media {
         this.categories = categories;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
 
     public abstract void play();
     public abstract void pause();

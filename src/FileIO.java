@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class FileIO {
 
-    private String filmFile = "csv/film.txt";
+    private List<String> filmFile = "csv/film.txt";
     private String seriesFile = "csv/series.txt";
     private String userFile = "csv/userData.txt";
 
@@ -16,7 +16,7 @@ public class FileIO {
     private Scanner scan;
 
 
-    public List<Film> loadFilms() {
+    public List<String> loadFilms() {
 
         try {
             File films = new File("csv/film.txt");
@@ -42,7 +42,7 @@ public class FileIO {
             System.out.println("Filen ikke fundet!!!");
         }
 
-        return List.of(filmFile);
+        return filmFile;
     }
 
 
