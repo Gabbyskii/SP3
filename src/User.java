@@ -55,5 +55,5 @@ public class User {
 
     public void setRemoveMedia(List<Media> removeMedia) {
         this.removeMedia = removeMedia;
-    }
+
 }
