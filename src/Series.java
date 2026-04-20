@@ -22,4 +22,6 @@ public class Series extends Media {
     public void pause() {
         ui.displayMessage("Pauser serie: "+ title);
     }
+
+
 }
