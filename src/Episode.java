@@ -29,13 +29,13 @@ public class Episode extends Media {
 
 
     @Override
-    public void pause() {
-        super.pause();
+    public void play() {
+        ui.displayMessage("Starter episode: "+ title);
     }
 
     @Override
-    public void play() {
-        super.play();
+    public void pause() {
+        ui.displayMessage("Pauser episode: "+ title);
     }
 
 

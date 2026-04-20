@@ -16,7 +16,7 @@ public class FileIO {
     private Scanner scan;
 
 
-    public List<String> loadFilms() {
+    public List<Film> loadFilms() {
 
         try {
             File films = new File("csv/film.txt");
@@ -83,7 +83,6 @@ public class FileIO {
 
     public List<User>loadUsers(){
         List<User> userList = new ArrayList<>();
-
 
 
 
