@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class Menu {
 
-    private ArrayList<User>users;
+   private ArrayList<User>users;
    private ArrayList<Media>media;
    private TextUI ui;
-    private User currentUser;
+   private User currentUser;
 
 
    public void register(){
