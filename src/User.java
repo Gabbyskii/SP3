@@ -41,6 +41,14 @@ public class User {
         this.watchedMedia = watchedMedia;
     }
 
+    public void addSavedMedia(Media m) {
+        savedMedia.add(m);
+    }
+
+    public void removeSavedMedia(Media m) {
+        savedMedia.remove(m);
+    }
+
     public List<Media> getSavedMedia() {
         return savedMedia;
     }
@@ -48,6 +56,7 @@ public class User {
     public void setSavedMedia(List<Media> savedMedia) {
         this.savedMedia = savedMedia;
     }
+
 
     public List<Media> getRemoveMedia() {
         return removeMedia;
