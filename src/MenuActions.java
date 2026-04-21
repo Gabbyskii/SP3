@@ -41,6 +41,42 @@ public class MenuActions {
     }
 
 
+    public void showMediaByCategory(Category category) {
+        for (Media m : medialist) {
+            if (m.getCategories().contains(category)) {
+                System.out.println(m.getTitle());
+            }
+        }
+    }
+
+    public void searchMediaCategory() {
+        showAllCategories();
+
+        String input = ui.promptString("Vælg en kategori: ");
+        int choice = Integer.parseInt(input);
+
+        Category chosen = Category.values()[choice - 1];
+
+        System.out.println("Medier i kategorien " + chosen + ":");
+        showMediaByCategory(chosen);
+    }
+
+    public void showAllCategories() {
+        int index = 1;
+        for (Category c : Category.values()) {
+            System.out.println(index + "- " + c);
+            index++;
+        }
+    }
+
+    public void showWatchedMedia() {
+        List<Media> watchedMedia = currentUser.getWatchedMedia();
+
+        ui.displayMessage("Dine gemte medier: ");
+        for (Media m : watchedMedia) {
+            ui.displayMessage("-" + m.getTitle());
+        }
+    }
 
 
 
