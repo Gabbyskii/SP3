@@ -1,5 +1,6 @@
 import util.TextUI;
 import java.util.List;
+import Category;
 
 public class MenuActions {
 
@@ -13,16 +14,18 @@ public class MenuActions {
 
         for (Media m : mediaList) {
             boolean matchTitle = m.getTitle().toLowerCase().contains(query);
-            boolean matchCategory = m.getCategories()
-                    .toString()
-                    .toLowerCase()
-                    .contains(query);
-
-            if (matchTitle || matchCategory) {
-                ui.displayMsg(m.getTitle() + " (" + m.getReleaseYear() + ")");
-                found = true;
+            boolean matchCategory = false;
+            for (Category c : m.getCategories()) {
+                if (c.name().toLowerCase().contains(query)) {
+                    matchCategory = true;
+                    break;
+                }
+                if (matchTitle || matchCategory) {
+                    String categoryList = m.getCategories().toString();
+                    ui.displayMessage(m.getTitle() + " (" + m.getReleaseYear() + ") — " + categoryList);
+                    found = true;
+                }
             }
-        }
 
         if (!found) {
             ui.displayMsg("Ingen resultater fundet.");
