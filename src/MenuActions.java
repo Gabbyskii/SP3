@@ -71,15 +71,10 @@ public class MenuActions {
                 case "2" -> searchMediaCategory();
                 case "3" -> showWatchedMedia();
                 case "4" -> showSavedMedia();
-                case "5" -> running = false;
+                case "5" -> mediaRuns = false;
             }
 
-
-
-
         }
-
-
 
     }
 
