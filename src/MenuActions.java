@@ -3,13 +3,13 @@ import java.util.List;
 public class MenuActions {
 
     private TextUI ui;
-    private List<Media> media;
+    private List<Media> medialist;
     private User currentUser;
     private FileIO fileio;
 
     public MenuActions(TextUI ui, List<Media> media, User currentUser, FileIO fileio) {
         this.ui = ui;
-        this.media = media;
+        this.medialist = media;
         this.currentUser = currentUser;
         this.fileio = fileio;
     }
@@ -22,7 +22,7 @@ public class MenuActions {
 
         boolean found = false;
 
-        for (Media m : media) {
+        for (Media m : medialist) {
             boolean matchTitle = m.getTitle().toLowerCase().contains(query);
             boolean matchCategory = m.getCategories()
                     .toString()
@@ -45,11 +45,13 @@ public class MenuActions {
 
 
     public void showSavedMedia(){
-        ui.displayMessage("Dine gemte medier: ");
+       List<Media>savedMedia = currentUser.getSavedMedia();
 
-        for (Media m: media){
+        ui.displayMessage("Dine gemte medier: ");
+        for (Media m: savedMedia){
            ui.displayMessage("-" + m.getTitle());
         }
+
 
     }
 
