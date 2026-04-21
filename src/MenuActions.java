@@ -1,7 +1,7 @@
 import java.util.List;
 
-public class MenuActions {
 
+public class MenuActions {
     private TextUI ui;
     private List<Media> medialist;
     private User currentUser;
@@ -40,26 +40,58 @@ public class MenuActions {
         }
     }
 
-
-
-
-
-    public void showSavedMedia(){
-       List<Media>savedMedia = currentUser.getSavedMedia();
+    //SE SETE MEDIER
+    public void showWatchedMedia() {
+        List<Media> watchedMedia = currentUser.getWatchedMedia();
 
         ui.displayMessage("Dine gemte medier: ");
-        for (Media m: savedMedia){
-           ui.displayMessage("-" + m.getTitle());
+        for (Media m : watchedMedia) {
+            ui.displayMessage("-" + m.getTitle());
         }
-
-
     }
 
+    //SE GEMTE MEDIER
+    public void showSavedMedia() {
+        List<Media> savedMedia = currentUser.getSavedMedia();
 
-    public void showMenu(){
+        ui.displayMessage("Dine gemte medier: ");
+        for (Media m : savedMedia) {
+            ui.displayMessage("- " + m.getTitle());
+        }
+    }
+
+    public void showAllCategories() {
+        int index = 1;
+        for (Category c : Category.values()) {
+            System.out.println(index + "- " + c);
+            index++;
+        }
+    }
+
+    public void searchMediaCategory() {
+        showAllCategories();
+
+        String input = ui.promptString("Vælg en kategori: ");
+        int choice = Integer.parseInt(input);
+
+        Category chosen = Category.values()[choice - 1];
+
+        System.out.println("Medier i kategorien " + chosen + ":");
+        showMediaByCategory(chosen);
+    }
+
+    public void showMediaByCategory(Category category) {
+        for (Media m : medialist) {
+            if (m.getCategories().contains(category)) {
+                System.out.println(m.getTitle());
+            }
+        }
+    }
+
+    public void showMenu() {
         boolean mediaRuns = true;
 
-        while (mediaRuns){
+        while (mediaRuns) {
             ui.displayMessage("1. Søg film.");
             ui.displayMessage("2. Søg medie kategori.");
             ui.displayMessage("3. Mine sete medier.");
@@ -68,7 +100,7 @@ public class MenuActions {
 
             String choice = ui.promptString("Vælg en af mulighederne (1-5) ");
 
-            switch (choice){
+            switch (choice) {
                 case "1" -> searchMedia();
                 case "2" -> searchMediaCategory();
                 case "3" -> showWatchedMedia();
@@ -79,12 +111,8 @@ public class MenuActions {
         }
 
     }
-
-
-
-
-
-
-
-
 }
+
+
+
+
