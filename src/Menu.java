@@ -56,4 +56,6 @@ abstract class Menu {
         this.ui.displayMessage("Velkommen du er nu oprettet");
 
     }
+
+
 }
