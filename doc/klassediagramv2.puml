@@ -13,7 +13,7 @@ abstract class Media{
 + pause()
 }
 
-abstract class Menu{
+class Menu{
 -Arraylist<User>users
 -Arraylist<Media>media
 + start()

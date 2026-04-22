@@ -16,8 +16,8 @@ public class FileIO {
     private Scanner scan;
 
 
-    public List<String> loadFilms() {
-
+    public List<Film> loadFilms() {
+        List<Film> filmList = new ArrayList<>();
         try {
             File films = new File("csv/film.txt");
             scan = new Scanner(films);
@@ -42,12 +42,12 @@ public class FileIO {
             System.out.println("Filen ikke fundet!!!");
         }
 
-        return filmFile;
+        return filmList;
     }
 
 
-    public List<String> loadSeries() {
-        //List<Series> seriesList = new ArrayList<>();
+    public List<Series> loadSeries() {
+        List<Series> seriesList = new ArrayList<>();
         try {
             File series = new File("csv/series.txt");
             scan = new Scanner(series);
@@ -75,7 +75,7 @@ public class FileIO {
         } catch (FileNotFoundException e) {
             System.out.println("Filen ikke fundet!!!");
         }
-        return List.of(seriesFile);
+        return seriesList;
     }
 
 
@@ -125,6 +125,7 @@ public class FileIO {
             System.out.println("Fejl ved gemning af bruger: " + e.getMessage());
         }
     }
+
 
 }
 

@@ -39,7 +39,6 @@ public class MenuActions {
         }
     }
 
-    //SE SETE MEDIER
     public void showWatchedMedia() {
         List<Media> watchedMedia = currentUser.getWatchedMedia();
 
@@ -49,7 +48,6 @@ public class MenuActions {
         }
     }
 
-    //SE GEMTE MEDIER
     public void showSavedMedia() {
         List<Media> savedMedia = currentUser.getSavedMedia();
 
@@ -108,6 +106,7 @@ public class MenuActions {
             }
 
         }
-
     }
+
+
 }
