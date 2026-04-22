@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,19 +14,23 @@ public class FileIO {
     public List<Film> loadFilms() {
         List<Film> filmList = new ArrayList<>();
         try {
-            File films = new File("csv/film.txt");
+            File films = new File(filmFile);
             scan = new Scanner(films);
 
             while (scan.hasNextLine()) {
-                String line = scan.nextLine();
+                String line = scan.nextLine().trim();
+                if (line.isEmpty()) continue;
                 String[] values = line.split(";");
+                if (values.length < 4) continue;
 
                 String title = values[0].trim();
-                int releaseYears = Integer.parseInt(values[1].trim().split("-")[0]);
-                String[] categories = values[2].trim().split(",");
+                int releaseYear = Integer.parseInt(values[1].trim().split("-")[0]);
+                String[] catStrings = values[2].trim().split(",");
                 int rating = (int) Double.parseDouble(values[3].trim().replace(",", "."));
-                System.out.println("Movies: " + title + ", (" + releaseYears + ") " +
-                        ", Genres: " + Arrays.toString(categories) + ", rating: " + rating);
+
+                List<Category> categories = parseCategories(catStrings);
+
+                filmList.add(new Film(releaseYear, title, rating, categories, null));
             }
             scan.close();
 
@@ -41,21 +44,23 @@ public class FileIO {
     public List<Series> loadSeries() {
         List<Series> seriesList = new ArrayList<>();
         try {
-            File series = new File("csv/series.txt");
+            File series = new File(seriesFile);
             scan = new Scanner(series);
 
             while (scan.hasNextLine()) {
-                String line = scan.nextLine();
+                String line = scan.nextLine().trim();
+                if (line.isEmpty()) continue;
                 String[] values = line.split(";");
+                if (values.length < 4) continue;
 
                 String title = values[0].trim();
-                int releaseYears = Integer.parseInt(values[1].trim().split("-")[0]);
-                String[] categories = values[2].trim().split(",");
-                double rating = Double.parseDouble(values[3].trim().replace(",", "."));
-                int seasons = Integer.parseInt(values[4].trim().split("-")[0].split(",")[0].trim());
-                int episodes = Integer.parseInt(values[5].trim().split("-")[0].split(",")[0].trim());
-                System.out.println("Series: " + title + releaseYears +
-                        Arrays.toString(categories) + rating + seasons + episodes);
+                int releaseYear = Integer.parseInt(values[1].trim().split("-")[0]);
+                String[] catStrings = values[2].trim().split(",");
+                int rating = (int) Double.parseDouble(values[3].trim().replace(",", "."));
+
+                List<Category> categories = parseCategories(catStrings);
+
+                seriesList.add(new Series(releaseYear, title, rating, categories));
             }
             scan.close();
 
@@ -63,6 +68,18 @@ public class FileIO {
             System.out.println("Filen ikke fundet!!!");
         }
         return seriesList;
+    }
+
+    private List<Category> parseCategories(String[] catStrings) {
+        List<Category> categories = new ArrayList<>();
+        for (String cat : catStrings) {
+            try {
+                categories.add(Category.valueOf(cat.trim().toUpperCase().replace("-", "_").replace(" ", "_")));
+            } catch (IllegalArgumentException e) {
+                // skip unknown categories
+            }
+        }
+        return categories;
     }
 
     public List<User> loadUsers(ArrayList<User> users) {
@@ -75,7 +92,7 @@ public class FileIO {
             while (line != null) {
                 String[] values = line.split(",");
                 if (values.length >= 2) {
-                    User newUser = new User(values[0], values[1]);
+                    User newUser = new User(values[0].trim(), values[1].trim());
                     userList.add(newUser);
                 }
                 line = breader.readLine();

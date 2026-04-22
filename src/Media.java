@@ -4,7 +4,7 @@ public abstract class Media {
 
   protected String title;
   private int releaseYear;
-  private int rating;
+  private double rating;
   private List<Category> categories;
   TextUI ui;
 
@@ -14,6 +14,7 @@ public abstract class Media {
         this.title = title;
         this.rating = rating;
         this.categories = categories;
+
     }
 
     public String getTitle() {
@@ -24,7 +25,7 @@ public abstract class Media {
         return releaseYear;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 

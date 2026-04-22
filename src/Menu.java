@@ -10,8 +10,10 @@ public class Menu {
 
 
     public Menu(TextUI ui, FileIO io) {
-        this.users = new ArrayList<>(io.loadUsers(users));
+        this.users = new ArrayList<>(io.loadUsers(new ArrayList<>()));
         this.media = new ArrayList<>();
+        this.media.addAll(io.loadFilms());
+        this.media.addAll(io.loadSeries());
         this.ui = ui;
         this.io = io;
 
@@ -30,6 +32,7 @@ public class Menu {
         boolean loggedIn;
             this.ui.displayMessage("1. Opret bruger");
             this.ui.displayMessage("2. Login");
+
             switch (this.ui.getUserInput("Vælg 1. Opret bruger el. 2. Login")) {
                 case "1":
                     this.register();
@@ -50,7 +53,7 @@ public class Menu {
         String password = this.ui.promptForPassword();
 
         for (User user : this.users) {
-            io.loadUsers(users);
+           // io.loadUsers(users);
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 currentUser = user;
                 this.ui.displayMessage("Velkommen tilbage " + user);
@@ -67,7 +70,7 @@ public class Menu {
 
         User newUser = new User(username, password);
         users.add(newUser);
-        io.saveUsers(users);
+       // io.saveUsers(users);
         this.ui.displayMessage("Velkommen du er nu oprettet");
 
     }

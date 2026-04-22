@@ -31,7 +31,8 @@ public class MenuActions {
             if (matchTitle || matchCategory) {
                 fileio.loadFilms();
                 fileio.loadSeries();
-                ui.displayMessage(m.getTitle() + " (" + m.getReleaseYear() + ")");
+                ui.displayMessage(m.getTitle() + " (" + m.getReleaseYear() + ") ");
+                m.play();
                 found = true;
             }
         }
@@ -94,6 +95,12 @@ public class MenuActions {
         boolean mediaRuns = true;
 
         while (mediaRuns) {
+            ui.displayMessage("\n--- Tilgængelige medier ---");
+            for (Media m : medialist) {
+                ui.displayMessage(m.getTitle() + " (" + m.getReleaseYear() + ")");
+            }
+            ui.displayMessage("---------------------------\n");
+
             ui.displayMessage("1. Søg film.");
             ui.displayMessage("2. Søg medie kategori.");
             ui.displayMessage("3. Mine sete medier.");
