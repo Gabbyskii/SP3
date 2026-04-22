@@ -8,5 +8,6 @@ public class Main {
 
         MenuActions menuActions = new MenuActions(ui, startMenu.getMedia(), currentUser, fileio);
         menuActions.showMenu();
+
     }
 }
