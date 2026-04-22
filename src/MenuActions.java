@@ -43,7 +43,7 @@ public class MenuActions {
     public void showWatchedMedia() {
         List<Media> watchedMedia = currentUser.getWatchedMedia();
 
-        ui.displayMessage("Dine gemte medier: ");
+        ui.displayMessage("Dine sete medier:");
         for (Media m : watchedMedia) {
             ui.displayMessage("-" + m.getTitle());
         }
@@ -62,7 +62,7 @@ public class MenuActions {
     public void showAllCategories() {
         int index = 1;
         for (Category c : Category.values()) {
-            System.out.println(index + "- " + c);
+            ui.displayMessage(index + "- " + c);
             index++;
         }
     }
@@ -82,7 +82,7 @@ public class MenuActions {
     public void showMediaByCategory(Category category) {
         for (Media m : medialist) {
             if (m.getCategories().contains(category)) {
-                System.out.println(m.getTitle());
+                ui.displayMessage(m.getTitle());
             }
         }
     }
