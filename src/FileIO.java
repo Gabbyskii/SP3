@@ -4,17 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class FileIO {
 
     private String filmFile = "csv/film.txt";
     private String seriesFile = "csv/series.txt";
     private String userFile = "csv/userData.txt";
 
-
     private Scanner scan;
-
 
     public List<Film> loadFilms() {
         List<Film> filmList = new ArrayList<>();
@@ -27,14 +23,11 @@ public class FileIO {
                 String[] values = line.split(";");
 
                 String title = values[0].trim();
-                int releaseYear = Integer.parseInt(values[1].trim());
+                int releaseYears = Integer.parseInt(values[1].trim().split("-")[0]);
                 String[] categories = values[2].trim().split(",");
-                int rating = Integer.parseInt(values[3]);
-                System.out.println("Movies: "+ title + releaseYear +
-                        Arrays.toString(categories) + rating);
-
-                /*Film movies = new Film(title, releaseYear, categories, rating);
-                System.out.println(movies);*/
+                int rating = (int) Double.parseDouble(values[3].trim().replace(",", "."));
+                System.out.println("Movies: " + title + ", (" + releaseYears + ") " +
+                        ", Genres: " + Arrays.toString(categories) + ", rating: " + rating);
             }
             scan.close();
 
@@ -44,7 +37,6 @@ public class FileIO {
 
         return filmList;
     }
-
 
     public List<Series> loadSeries() {
         List<Series> seriesList = new ArrayList<>();
@@ -57,18 +49,13 @@ public class FileIO {
                 String[] values = line.split(";");
 
                 String title = values[0].trim();
-                int releaseYears = Integer.parseInt(values[1].trim());
+                int releaseYears = Integer.parseInt(values[1].trim().split("-")[0]);
                 String[] categories = values[2].trim().split(",");
-                double rating = Double.parseDouble(values[3].trim());
-                int seasons = Integer.parseInt(values[4].trim());
-                int episodes = Integer.parseInt(values[5].trim());
+                double rating = Double.parseDouble(values[3].trim().replace(",", "."));
+                int seasons = Integer.parseInt(values[4].trim().split("-")[0].split(",")[0].trim());
+                int episodes = Integer.parseInt(values[5].trim().split("-")[0].split(",")[0].trim());
                 System.out.println("Series: " + title + releaseYears +
                         Arrays.toString(categories) + rating + seasons + episodes);
-
-                //oprette et series objekt?
-                /*Series series = new Series(title, releaseYears, categories, rating, seasons, episodes);
-                seriesList.add(series);
-                System.out.println(series);*/
             }
             scan.close();
 
@@ -78,27 +65,20 @@ public class FileIO {
         return seriesList;
     }
 
-
-
-
-    public List<User>loadUsers(){
+    public List<User> loadUsers(ArrayList<User> users) {
         List<User> userList = new ArrayList<>();
 
         try {
-
             BufferedReader breader = new BufferedReader(new FileReader(userFile));
             String line = breader.readLine();
 
-            while(line != null){
-
-
-              String[] values = line.split(",");
-              if (values.length >= 2){
-                  User newUser = new User(values[0], values[1]);
-                  userList.add(newUser);
-
-              }
-
+            while (line != null) {
+                String[] values = line.split(",");
+                if (values.length >= 2) {
+                    User newUser = new User(values[0], values[1]);
+                    userList.add(newUser);
+                }
+                line = breader.readLine();
             }
 
         } catch (FileNotFoundException e) {
@@ -110,8 +90,7 @@ public class FileIO {
         return userList;
     }
 
-
-    public void saveUsers (List<User> userList){
+    public void saveUsers(List<User> userList) {
         try {
             BufferedWriter bWriter = new BufferedWriter(new FileWriter(userFile));
 
@@ -125,10 +104,4 @@ public class FileIO {
             System.out.println("Fejl ved gemning af bruger: " + e.getMessage());
         }
     }
-
-
 }
-
-
-
-

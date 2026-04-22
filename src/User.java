@@ -66,4 +66,10 @@ public class User {
         this.removeMedia = removeMedia;
 
     }
+
+
+    @Override
+    public String toString() {
+        return username + " 🤍";
+    }
 }

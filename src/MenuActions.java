@@ -29,6 +29,8 @@ public class MenuActions {
                     .contains(query);
 
             if (matchTitle || matchCategory) {
+                fileio.loadFilms();
+                fileio.loadSeries();
                 ui.displayMessage(m.getTitle() + " (" + m.getReleaseYear() + ")");
                 found = true;
             }
@@ -74,6 +76,8 @@ public class MenuActions {
         Category chosen = Category.values()[choice - 1];
 
         System.out.println("Medier i kategorien " + chosen + ":");
+        fileio.loadFilms();
+        fileio.loadSeries();
         showMediaByCategory(chosen);
     }
 
@@ -81,6 +85,7 @@ public class MenuActions {
         for (Media m : medialist) {
             if (m.getCategories().contains(category)) {
                 ui.displayMessage(m.getTitle());
+                fileio.loadFilms();
             }
         }
     }
@@ -108,5 +113,13 @@ public class MenuActions {
         }
     }
 
-
+    @Override
+    public String toString() {
+        return "MenuActions{" +
+                "ui=" + ui +
+                ", medialist=" + medialist +
+                ", currentUser=" + currentUser +
+                ", fileio=" + fileio +
+                '}';
+    }
 }

@@ -27,4 +27,11 @@ private int duration;
         ui.displayMessage(getTitle() + " Sat på pause");
     }
 
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "duration=" + duration +
+                '}';
+    }
 }
