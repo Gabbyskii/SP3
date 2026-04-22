@@ -4,7 +4,7 @@ public enum Category {
     DRAMA,
     FAMILY,
     ROMANCE,
-    SCI_FI,
+    SCIFI,
     FANTASY,
     MYSTERY,
     THRILLER,
@@ -16,7 +16,7 @@ public enum Category {
     ACTION,
     WESTERN,
     DOCUMENTARY,
-    TALK_SHOW,
+    TALKSHOW,
     SPORT
-
 }
+

@@ -66,4 +66,5 @@ public class User {
         this.removeMedia = removeMedia;
 
     }
+
 }
